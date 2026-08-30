@@ -1,0 +1,26 @@
+# Example Certified Host Configuration for JobServer / Hilbert
+
+[hosts.localhost]
+type = "local"
+max_cores = 10
+scratch_dir = "./"
+
+[hosts.cluster01]
+type = "ssh"
+hostname = "cluster01.university.edu"
+username = "chem_user"
+port = 22
+key_filename = "~/.ssh/id_ed25519"
+max_cores = 32
+remote_scratch = "/scratch/chem_user/hilbert_jobs"
+hilbert_env_bin = "/opt/miniconda3/envs/hilbert/bin"
+
+[hosts.gpu_node]
+type = "ssh"
+hostname = "gpu01.lab.internal"
+username = "ai_user"
+port = 22
+key_filename = "~/.ssh/id_rsa"
+max_cores = 16
+remote_scratch = "/tmp/chem_scratch"
+hilbert_env_bin = "/home/ai_user/mambaforge/envs/mace/bin"
